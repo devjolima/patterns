@@ -6,7 +6,7 @@ import org.springframework.data.couchbase.core.mapping.Document;
 import javax.validation.constraints.NotNull;
 
 @Document
-public  class Post {
+public class Beer {
 
     @Id
     private String id;
@@ -38,7 +38,7 @@ public  class Post {
         this.description = description;
     }
 
-    public Post(String id, @NotNull String tittle, String description) {
+    public Beer(String id, @NotNull String tittle, String description) {
         this.id = id;
         this.tittle = tittle;
         this.description = description;

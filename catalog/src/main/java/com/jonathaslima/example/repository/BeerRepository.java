@@ -1,6 +1,6 @@
 package com.jonathaslima.example.repository;
 
-import com.jonathaslima.example.model.Post;
+import com.jonathaslima.example.model.Beer;
 import org.springframework.data.couchbase.core.query.ViewIndexed;
 import org.springframework.data.couchbase.repository.ReactiveCouchbaseRepository;
 import org.springframework.stereotype.Repository;
@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 import java.util.Optional;
 
 @Repository
-public interface PostRepository extends ReactiveCouchbaseRepository<Post,String> {
+public interface BeerRepository extends ReactiveCouchbaseRepository<Beer,String> {
 
-    Mono<Post> findByTittle(String tittle);
+    Mono<Beer> findByTittle(String tittle);
 }
