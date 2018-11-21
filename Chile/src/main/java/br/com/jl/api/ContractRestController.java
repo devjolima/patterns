@@ -1,5 +1,7 @@
 package br.com.jl.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,17 +37,17 @@ public class ContractRestController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@GetMapping("/contracts")
-	public ResponseEntity<String> getContract() {
+	@GetMapping("/getContracts")
+	public ResponseEntity<String> getContracts() {
 		
-		Contract contract = repo.getContract();
+		List<Contract> contracts = repo.getContract();
 		
 		ObjectMapper mapper = new ObjectMapper();
 		
 		try {
 		
 			return ResponseEntity.status(HttpStatus.OK)
-			        .body(mapper.writeValueAsString(contract));
+			        .body(mapper.writeValueAsString(contracts));
 		
 		} catch (JsonProcessingException e) {
 			

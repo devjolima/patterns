@@ -2,32 +2,29 @@ package br.com.jl.repository;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import br.com.jl.entity.Contract;
+import br.com.jl.generic.repository.AbstractRepository;
 
 @Repository
-public class ContractRepository {
+public class ContractRepository extends AbstractRepository {
 
 	private static final String KEY = "contratos";
 	private static final String KEY_RESP = "responsaveis";
 
-	@Autowired
-	private RedisTemplate<String, Object> template;
-
+	@SuppressWarnings("unchecked")
 	public void addContract(Contract contract) {
+		
+		addEntity(KEY_RESP, contract.getOwner());
+		addEntity(KEY, contract);
 
-		template.opsForList().leftPush(KEY_RESP, contract.getOwner());
-		template.opsForList().leftPush(KEY, contract);
 	}
 
-	public Contract getContract() {
+	@SuppressWarnings("unchecked")
+	public List<Contract> getContract() {
 		
-		List<Object> retorno = template.opsForList().range("contratos", 0, -1);
-		
-		return (Contract) retorno.get(0);
+		return getAllRegisters(KEY);
 	}
 
 }
