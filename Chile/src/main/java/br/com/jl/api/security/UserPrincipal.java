@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.jl.entity.User;
 
-public class UserPrincipal implements UserDetails{
+public class UserPrincipal implements UserDetails {
 	
 	private Long id;
 	
@@ -41,12 +41,11 @@ public class UserPrincipal implements UserDetails{
 
 	public static UserPrincipal create(User user) {
 		List<GrantedAuthority> authorities = user.getRoles().stream().map(
-					role -> new SimpleGrantedAuthority(role.getRoleName().name())
+					role -> new SimpleGrantedAuthority(role)
 				).collect(Collectors.toList());
 		
 		return new UserPrincipal(user.getId(), user.getName(), user.getUserName(), user.getEmail(), user.getPassword(), authorities);
 	}
-
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;

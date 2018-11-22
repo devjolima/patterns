@@ -1,6 +1,8 @@
 package br.com.jl.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class User {
@@ -15,9 +17,10 @@ public class User {
 	
 	private String email;
 	
-	private Set<Role> roles = new HashSet<>();
+	private List<String> roles = new ArrayList<>();
 	
-	public User(Long id, String name, String userName, String password, String email, Set<Role> roles) {
+
+	public User(Long id, String name, String userName, String password, String email, List<String> roles) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -51,11 +54,12 @@ public class User {
 		this.password = password;
 	}
 
-	public Set<Role> getRoles() {
+
+	public List<String> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
 

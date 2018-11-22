@@ -1,5 +1,6 @@
 package br.com.jl.service;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ import br.com.jl.entity.RoleName;
 import br.com.jl.entity.User;
 
 @Service
-public class CustomDetailService implements UserDetailsService{
+public class CustomDetailService {
 	
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException{
 		
@@ -26,7 +27,7 @@ public class CustomDetailService implements UserDetailsService{
 			Set<Role> roles = new HashSet<>();
 			roles.add(role);
 			
-			User user = new User(1L, "jonathas lima", "jonathaslima", "12345", "jonathas.o.lima@gmail.com",roles);
+			User user = new User(1L, "jonathas lima", "jonathaslima", "12345", "jonathas.o.lima@gmail.com",Arrays.asList("ADMIN"));
 			return UserPrincipal.create(user);
 		}else {
 			return null;
