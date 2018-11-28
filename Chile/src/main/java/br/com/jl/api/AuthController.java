@@ -51,6 +51,9 @@ public class AuthController {
 			roles.add(role);
 			
 			String username = data.getUsername();
+			
+			
+			
 			customAuthenticateProvider.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
 			String token = jwtTokenProvider.createToken(username,   Arrays.asList("ADMIN"));
 			

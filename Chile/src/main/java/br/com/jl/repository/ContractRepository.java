@@ -3,6 +3,7 @@ package br.com.jl.repository;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import br.com.jl.entity.Contract;
 import br.com.jl.generic.repository.AbstractRepository;

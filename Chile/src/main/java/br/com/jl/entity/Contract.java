@@ -11,6 +11,13 @@ public class Contract implements Serializable {
 	private Owner owner;
 	private Integer value;
 	private Date contractDate;
+	
+	public Contract(Long id, Owner owner, Integer value, Date contractDate) {
+		this.id = id;
+		this.owner = owner;
+		this.value = value;
+		this.contractDate = contractDate;
+	}
 
 	public Long getId() {
 		return id;

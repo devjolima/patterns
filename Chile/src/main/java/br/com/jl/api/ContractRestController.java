@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.jl.entity.Contract;
 import br.com.jl.repository.ContractRepository;
+import br.com.jl.service.ContractService;
 import io.swagger.annotations.Api;
 
 @RestController
@@ -25,7 +27,12 @@ import io.swagger.annotations.Api;
 public class ContractRestController {
 	
 	@Autowired
-	ContractRepository repo;
+	private ContractRepository repo;
+	
+	@Autowired
+	private ContractService service;
+	
+	final String KEY = "contracts";
 
 	@PutMapping(value="/addContract")
 	public ResponseEntity<String> addContract(@RequestBody Contract contract){
@@ -40,7 +47,7 @@ public class ContractRestController {
 	@GetMapping("/getContracts")
 	public ResponseEntity<String> getContracts() {
 		
-		List<Contract> contracts = repo.getContract();
+		List<Contract> contracts = service.getAllContracts(KEY);
 		
 		ObjectMapper mapper = new ObjectMapper();
 		

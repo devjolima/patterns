@@ -10,6 +10,12 @@ public class Owner implements Serializable {
 	private String responsable;
 	private String typePersona;
 	
+	public Owner(Long id, String responsable, String typePersona) {
+		this.id = id;
+		this.responsable = responsable;
+		this.typePersona = typePersona;
+	}
+	
 	public Long getId() {
 		return id;
 	}

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
-import br.com.jl.entity.Contract;
-
 @Repository
 public abstract class AbstractRepository <T extends Serializable> {
 	
