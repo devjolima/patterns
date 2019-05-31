@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+
+    
+
+    <div class="container-fluid">
+        <h1>Get your Pokemon</h1>
+        <p>Inform the city for the hunter...</p> 
+
+        <p style="color: red" id="erro"></p>
+
+        <div class="col-xs-4">
+            <label for="city">City:</label>
+            <input type="text" class="form-control input-sm" id="city" >
+        </div>
+
+    
+    </div>
+    <br/>
+    <div class="col-xs-4">
+        <button type="button" class="btn btn-default" onclick="fireCity()">HUNT</button>
+    </div>
+
+    <div class="col-xs-4">
+            <div  id="temperature"></div>
+            <br/>
+            <div  id="namePoke"></div>
+            <br/>
+            <div  id="imagePoke"></div>
+
+    </div>
+    
+
+</body>
+
+
+
+
+<script>
+
+    function fireCity(){
+
+        var city = $("#city").val();
+
+        $.get( "http://172.17.0.2:8080/adtsys/api/search/find/"+city, function( data ) {
+            if(data.erro != undefined){
+                $("#erro").html( " Hey dud, look at this city man!! "+data.erro );
+
+            }
+            $("#namePoke").html( data[0].nome );
+            $("#temperature").html( "Temperatura em tempo real: "+data[0].temperatura+" ºC" );
+            $("#imagePoke").html( "<img src='"+data[0].imagem+"'/>" );
+            
+        });
+    }
+
+</script>
+
+</html>
