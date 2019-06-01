@@ -19,7 +19,7 @@ public class AdtsysApplicationTests {
 	private MockMvc mvc;
 
 	@Test
-	public void givenAllContracts() throws Exception {
+	public void givenPokes() throws Exception {
 		
 		mvc.perform(MockMvcRequestBuilders.get("/api/search/find/{cidade}", "dubai"))
         .andExpect(MockMvcResultMatchers.status().isOk());
