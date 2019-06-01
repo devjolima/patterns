@@ -1,0 +1,20 @@
+O projeto pokemon, encontra-se escrito utlizando o framwork Spring Boot 2, com uma API de acesso para realizar a busca dos pokemons
+de acordo com a temperatura da cidade informada.
+
+No projeto, encontram-se 3 arquivos:
+Dockerfile - Descreve as dependencias que precisam ser startadas para o funcionamento do projeto
+adtsys.war - Microserviço contendo a funcionalidade do projeto
+index.html - Pagina HTML de comunicação com a API, utilizando JQuery Http
+
+Para executar o projeto deve seguir os passos abaixo.
+
+1 - sudo docker build -t NOME_IMAGEM .
+
+2 - sudo docker run NOME_IMAGEM
+
+Após os passos o tomcat deve ser inicializado e o deploy do war acontecerá normalmente
+
+Com o tomcat UP, devemos abrir a pagina INDEX.HTML , presente neste pacote, e testar a aplicação e ver o seu funcionamento.
+
+OBS: Em caso de um IP customizado, no docker, que seja diferente de 172.17.0.2, deve-se executar um sudo docker inspect e verificar o IP
+que esta no nó BRIDGE, e substituir no HTML.
